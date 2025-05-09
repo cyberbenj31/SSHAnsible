@@ -1,0 +1,11 @@
+
+	VScode Extension					Publisher
+	___________________________________________________
+	Github CoPilot  					Github.com
+	autoDocstring - Python Docstring  	Nils Werner
+	Python Snippets  					Ferhat Yalçın
+	AREPL for python  					Almenon
+	Better Comments  					Aaron Bond			
+	Python Indent						Kevin Rose
+	Python Test Explorer				Little Fox Team
+	___________________________________________________
