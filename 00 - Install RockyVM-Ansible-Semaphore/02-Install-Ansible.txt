@@ -6,6 +6,8 @@ RockyLinux is RedHat so the following commands will be used:
 1. Update Packages
  : yum update -y
  : yum install epel-release -y
+ : dnf install epel-release -y
 
 2. Install Ansible
  : yum install ansible -y
+ : dnf -y install ansible-core
