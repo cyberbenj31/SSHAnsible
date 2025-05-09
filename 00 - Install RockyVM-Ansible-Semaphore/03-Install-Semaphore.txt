@@ -7,6 +7,7 @@ We will need to install the following:
 And modify Firewall and SELinux settings (Step 6)
 
 1. Update System
+ : dnf install epel-release
  : sudo dnf -y
 
 2. Install and Configure MariaDB
