@@ -1,3 +1,22 @@
+YOU MUST LOGIN TO THE ROUTER FIRST USING ANSIBLE TO PREVENT AUTHENTICATION FAILURE:
+[root@localhost ansible]# cd /etc/ansible/
+[root@localhost ansible]# ssh admin@192.168.102.12
+
+
+EDIT HOST FILE:
+
+[site-a]
+192.168.102.11
+
+[site-a:vars]
+ansible_user=admin
+ansible_password=pass
+ansible_connection=network_cli
+ansible_network_os=ios
+
+
+EDIT YML FILE:
+
 ---
 - name: addloop
   hosts: site-a
@@ -8,20 +27,71 @@
       ios_command:
         commands:
           - conf t
-          - int lo101
-          - ip add 101.101.101.101 255.255.255.255
+          - int lo11
+          - ip add 11.11.11.11 255.255.255.255
           - exit
-          - int lo102
-          - ip add 102.102.102.102 255.255.255.255
+          - int lo12
+          - ip add 12.12.12.12 255.255.255.255
           - exit
-          - int lo103
-          - ip add 103.103.103.103 255.255.255.255
+          - int lo13
+          - ip add 13.13.13.13 255.255.255.255
           - exit
-          - int lo104
-          - ip add 104.104.104.104 255.255.255.255
+          - int lo14
+          - ip add 14.14.14.14 255.255.255.255
           - exit
-          - int lo105
-          - ip add 105.105.105.105 255.255.255.255
+          - int lo15
+          - ip add 15.15.15.15 255.255.255.255
+      vars:
+        ansible_network_os: ios
+    
+    - name: "Change Name"
+      ios_command:
+        commands:
+          - conf t
+          - hostname devopsnaako
+      vars:
+        ansible_network_os: ios
+		
+		
+**********************************************************************		
+EDIT HOST FILE:
+
+[site-b]
+192.168.102.12
+
+[site-b:vars]
+ansible_user=admin
+ansible_password=pass
+ansible_connection=network_cli
+ansible_network_os=ios
+
+
+
+EDIT YML FILE:
+---
+- name: addloop
+  hosts: site-b
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: "Create Loopbacks"
+      ios_command:
+        commands:
+          - conf t
+          - int lo11
+          - ip add 11.11.11.11 255.255.255.255
+          - exit
+          - int lo12
+          - ip add 12.12.12.12 255.255.255.255
+          - exit
+          - int lo13
+          - ip add 13.13.13.13 255.255.255.255
+          - exit
+          - int lo14
+          - ip add 14.14.14.14 255.255.255.255
+          - exit
+          - int lo15
+          - ip add 15.15.15.15 255.255.255.255
       vars:
         ansible_network_os: ios
     
